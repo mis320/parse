@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .myButton {
+            background-color: #ededed;
+            border-radius: 28px;
+            border: 1px solid #dcdcdc;
+            display: inline-block;
+            cursor: pointer;
+            color: #777777;
+            font-family: Arial;
+            font-size: 10px;
+            padding: 11px 76px;
+            text-decoration: none;
+            text-shadow: -1px -1px 0px #ffffff;
+        }
+
+        .myButton:hover {
+            background-color: #dfdfdf;
+        }
+
+        .myButton:active {
+            position: relative;
+            top: 1px;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+
+        textarea {
+            resize: none;
+            border: 1px solid #000000;
+            border-radius: 5px;
+        }
+
+        textarea::placeholder {
+            border-color: rgb(7, 7, 7);
+        }
+    </style>
+</head>
+<script src="./web3/ethers.umd.min.js"></script>
+
+<script src="./utils/utils.js"></script>
+<script src="./tx/tx.js"></script>
+<script src="./tx/baseAbi.js"></script>
+
+<body>
+    <div class="left">
+        <span>tx</span>
+        <br>
+        <textarea id="txHash" id="" cols="90" rows="2"></textarea><br>
+        <br>
+        <span>to</span><br>
+        <textarea id="to" id="" cols="90" rows="2" onkeyup="
+        value=value.replace(/[^A-Za-z0-9]/g,'')
+        "></textarea><br>
+        <span>fee</span><br>
+        <textarea id="fee" id="" cols="90" rows="2" onkeyup="
+        value=value.replace(/[^\d.]/g,'') 
+        if (value.indexOf(`.`)!= value.lastIndexOf(`.`)) {
+            console.log(value.indexOf(`.`));
+            console.log(value.lastIndexOf(`.`));
+            str0 = value.slice(0,value.indexOf(`.`)+1)
+            str1 = value.slice(value.indexOf(`.`)+1)
+            str1= str1.replace(/\./g,'') 
+            value = str0+str1
+        }
+        ">0</textarea><br>
+        <span>abi</span>
+        <br>
+        <textarea id="txAbi" id="" cols="90" rows="12"></textarea><br>
+        <textarea id="local" id="" cols="90" rows="2"></textarea>
+        <textarea id="Decimals" id="" cols="2" rows="1">18</textarea><br>
+        <div style="align-content: center;">
+            <button onclick="decode()">解析</button>
+            <button onclick="encode()">编码</button>
+            <button onclick="emit()">模拟</button>
+            <button onclick="start()">执行</button></button>
+
+            <!-- <button id="" onclick="ex0()">扩展</button></button>
+            <button id="" onclick="ex1()">生成ABI</button></button> -->
+            <div style="align-content: center;"> </div>
+        </div>
+
+        <div>
+
+            <span>解析</span><br>
+            <textarea id="div_text" id="" cols="90" rows="7"></textarea><br>
+            <span>编码</span><br>
+            <textarea id="div_text2" id="" cols="90" rows="10"></textarea>
+        </div>
+
+
+    </div>
+</body>
+
+<script>
+    let provider
+    if (window.ethereum) {
+        provider = new ethers.BrowserProvider(window.ethereum);
+
+        try {
+            // 请求用户授权
+            window.ethereum.enable
+        } catch (error) {
+            // 用户不授权时
+
+        }
+    }
+    init();
+
+
+
+
+    (async () => {
+
+    })()
+</script>
+
+</html>
